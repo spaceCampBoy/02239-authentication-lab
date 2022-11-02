@@ -28,27 +28,20 @@ public class AuthService implements AuthServiceInterface {
 		UnicastRemoteObject.exportObject(this, 0);
 	}
 
-
-
-
+	
 
 	@Override
 	public String login(String username, String password) throws RemoteException, GeneralSecurityException  {
-
 		//get the password from file
 		String storedPass = returnUserStoredPass(username);
 
-		if (storedPass == null) {
-			System.out.println("(server): user '"+username+"' is not found");
+		if ((storedPass == null) || (!SCryptUtil.check(password, storedPass))) {
+			System.out.println("(server): Incorrect credentials");
 			return null;
-		}
-		else if (SCryptUtil.check(password, storedPass)) {
-			System.out.println("(server): user '"+username+"' is verified");
-			return createSessionToken();
 		}
 		else {
-			System.out.println("(server): incorrect password for user '"+username+"'");
-			return null;
+			System.out.println("(server): User '"+ username +"' is verified");
+			return createSessionToken();
 		}
 	}
 
@@ -87,15 +80,22 @@ public class AuthService implements AuthServiceInterface {
 
 
 	public Boolean checkSessionToken(String token) {
-		long milliseconds1 = tokenList.get(token).getTime();
-		long milliseconds2 = Timestamp.from(Instant.now()).getTime();
-		long diff = milliseconds2 - milliseconds1;
-		boolean diffAccept = diff / (60 * 1000) < 1;
-		if (diffAccept) {
-			tokenList.put(token, Timestamp.from(Instant.now()));
+		if (token == null) {
+			return false;
 		}
-		return tokenList.containsKey(token) && diffAccept;
+		else {
+			long milliseconds1 = tokenList.get(token).getTime();
+			long milliseconds2 = Timestamp.from(Instant.now()).getTime();
+			long diff = milliseconds2 - milliseconds1;
+			boolean diffAccept = diff / (60 * 1000) < 1;
+			if (diffAccept) {
+				tokenList.put(token, Timestamp.from(Instant.now()));
+			}
+			return tokenList.containsKey(token) && diffAccept;
+		}
 	}
+	
+	
 }
 
 	

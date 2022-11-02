@@ -14,7 +14,11 @@ public class PrintService implements PrintServiceInterface {
 	//list of printers
 	private HashMap<String, Printer> printers;
 	private HashMap<String, String> config;
-
+	private static final String NOTAUTH_MESSAGE = "User is not authenticated. Please log in";
+	private static final String ACT_SERVICE_MESSAGE = "Service is already running";
+	private static final String NOACT_SERVICE_MESSAGE = "Service is not running right now";
+	
+	private boolean PrintServiceIsActive;
 	
 	public PrintService(AuthService authServ) throws RemoteException {
 		super();
@@ -22,22 +26,21 @@ public class PrintService implements PrintServiceInterface {
 		this.authServ = authServ;		
 		printers = new HashMap<>();
 		config = new  HashMap<String, String>();
-
-
 		printers.put("printer1", new Printer("printer1"));
 		printers.put("printer2", new Printer("printer2"));
+		PrintServiceIsActive = true;
 	}
 	
 	@Override
 	public String print(String filename, String printer, String token) throws RemoteException {
 
 		if (!authServ.checkSessionToken(token)) {
-			return "user is not logged in (no valid session token found)";
+			return NOTAUTH_MESSAGE;
 		}
 		else {	
 			Printer activePrinter = printers.get(printer);
 			activePrinter.print(filename);
-			return "'"+filename+"' is printed at '"+printer+"' using valid token '"+token+"'" ;
+			return "'"+filename+"' is printed at '" + printer;
 		}
 			
 	}
@@ -45,69 +48,129 @@ public class PrintService implements PrintServiceInterface {
 
 
 	@Override
-	public void queue(String printer) throws RemoteException {
-		Printer activePrinter = printers.get(printer);
-		activePrinter.getQueue();
+	public String queue(String printer, String token) throws RemoteException {
+		if (!authServ.checkSessionToken(token)) {
+			System.out.println("2a privet");
+			return NOTAUTH_MESSAGE;
+		}
+		else {	
+			Printer activePrinter = printers.get(printer);
+			return activePrinter.getQueue().toString();
+		}
 	}
 
 
 
 	@Override
-	public void topQueue(String printer, int job) throws RemoteException {
-		Printer activePrinter = printers.get(printer);
-		activePrinter.topQueue(job);
-	}
-
-
-
-	@Override
-	public void start() throws RemoteException {
-		//		check if service is not running already
-		//		set ON status for every printer?
-	}
-
-
-
-	@Override
-	public void stop() throws RemoteException {
-		//       check if service is actually running, so there is something to stop
-		//		 set OFF status for every printer
-		//		 clear queue of every printer  -- maybe not??
+	public String topQueue(String printer, int job, String token) throws RemoteException {
+		if (!authServ.checkSessionToken(token)) {
+			return NOTAUTH_MESSAGE;
+		}
+		else {	
+			Printer activePrinter = printers.get(printer);
+			if (activePrinter.getQueue().size() < job) {
+				return "No such job number. Queue has " + activePrinter.getQueue().size() +" jobs";
+			}
+			else {
+				activePrinter.topQueue(job);
+				return "Print job " + job + " is moved to top of the queue at " + printer;
+			}
+		}
 		
 	}
 
 
 
 	@Override
-	public void restart() throws RemoteException {
-		//check if running atm
-		//stop()
-		//clear queue of every printer
-		//start()
-	
+	public String start(String token) throws RemoteException {
+		if (!authServ.checkSessionToken(token)) {
+			return NOTAUTH_MESSAGE;
+		}
+		if (PrintServiceIsActive) {
+			return ACT_SERVICE_MESSAGE; 
+		}
+		for (Printer printer : printers.values()) {
+		    printer.setStatus("ON");
+		}
+		PrintServiceIsActive = true;
+		return "Print service is running";
 	}
 
 
 
 	@Override
-	public void status(String printer) throws RemoteException {
-		Printer activePrinter = printers.get(printer);
-		activePrinter.getStatus();
+	public String stop(String token) throws RemoteException {
+		if (!authServ.checkSessionToken(token)) {
+			return NOTAUTH_MESSAGE;
+		}
+		if (!PrintServiceIsActive) {
+			return NOACT_SERVICE_MESSAGE; 
+		}
+		for (Printer printer : printers.values()) {
+		    printer.setStatus("OFF");
+		}
+		PrintServiceIsActive = false;
+		return "Print service is stopped";
 	}
 
 
 
 	@Override
-	public void readConfig(String parameter) throws RemoteException {
-		System.out.println("readConfig(): "+ config.get(parameter));
+	public String restart(String token) throws RemoteException {
+		
+		if (!authServ.checkSessionToken(token)) {
+			return NOTAUTH_MESSAGE;
+		}
+		
+		if (!PrintServiceIsActive) {
+			return NOACT_SERVICE_MESSAGE; 
+		}
+		
+		for (Printer printer : printers.values()) {
+			printer.clearQueue();
+		    printer.setStatus("ON");
+		}
+		PrintServiceIsActive = true;
+		return "Print service is restarted";
 	}
 
 
 
 	@Override
-	public void setConfig(String parameter, String value) throws RemoteException {
-		config.put(parameter, value);
-		System.out.println("setConfig(): set value "+ value + " into parameter" + parameter);
+	public String status(String printer, String token) throws RemoteException {
+		if (!authServ.checkSessionToken(token)) {
+			return NOTAUTH_MESSAGE;
+		}
+		else {	
+			Printer activePrinter = printers.get(printer);
+			return activePrinter.getStatus();
+		}
+	}
+
+
+
+	@Override
+	public String readConfig(String parameter, String token) throws RemoteException {
+		if (!authServ.checkSessionToken(token)) {
+			return NOTAUTH_MESSAGE;
+		}
+		else {
+			return "Value of parameter '" + parameter + "' is " + config.get(parameter);
+		}
+		
+	}
+
+
+
+	@Override
+	public String setConfig(String parameter, String value, String token) throws RemoteException {
+		if (!authServ.checkSessionToken(token)) {
+			return NOTAUTH_MESSAGE;
+		}
+		else {
+			config.put(parameter, value);
+			return "Value '" + value + "' is set for parameter '" + parameter + "'";
+		}
 	}
 
 

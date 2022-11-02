@@ -1,6 +1,7 @@
 package com.labwork;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Printer {
 	
@@ -23,6 +24,17 @@ public class Printer {
 	
 	private void addToQueue (String filename) {
 		queue.put(queue.size()+1, filename);
+	}
+	
+	private void removeFromQueue (String filename) {
+		Iterator<HashMap.Entry<Integer, String> > iterator = queue.entrySet().iterator();
+		while (iterator.hasNext()) {
+			 HashMap.Entry<Integer, String> entry = iterator.next();
+			 if (filename.equals(entry.getValue())) {
+	                // Remove this entry from HashMap
+	                iterator.remove();
+	            }
+		}
 	}
 	
 	public void clearQueue() {
@@ -51,12 +63,30 @@ public class Printer {
 		return stat.name();
 	}
 	
+	public void setStatus(String s) {
+		if (s.equals("ON")) {
+			stat = Status.ON;
+		}
+		if (s.equals("OFF")) {
+			stat = Status.OFF;
+		}
+		
+		if (s.equals("PRINTING")) {
+			stat = Status.PRINTING;
+		}
+		
+		
+	}
+	
 	private String getName() {
 		return name;
 	}
 	
 	public void print(String filename) {
 		addToQueue(filename);
+		setStatus("PRINTING");
 		System.out.println("(server): "+ "'"+filename+"' is printed at '"+ getName() +"' using token '");
+		removeFromQueue(filename);
+		setStatus("ON");
 	}
 }
