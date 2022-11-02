@@ -13,19 +13,19 @@ public class PrintService implements PrintServiceInterface {
 	
 	//list of printers
 	private HashMap<String, Printer> printers;
+	private HashMap<String, String> config;
+
 	
 	public PrintService(AuthService authServ) throws RemoteException {
 		super();
 		UnicastRemoteObject.exportObject(this, 0);
-		this.authServ = authServ;
-		
+		this.authServ = authServ;		
 		printers = new HashMap<>();
-		
-//		Printer printer1 = ;
+		config = new  HashMap<String, String>();
+
+
 		printers.put("printer1", new Printer("printer1"));
-		//
-		//create list of printers every time????
-		//
+		printers.put("printer2", new Printer("printer2"));
 	}
 	
 	@Override
@@ -93,23 +93,21 @@ public class PrintService implements PrintServiceInterface {
 	public void status(String printer) throws RemoteException {
 		Printer activePrinter = printers.get(printer);
 		activePrinter.getStatus();
-		
 	}
 
 
 
 	@Override
 	public void readConfig(String parameter) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		System.out.println("readConfig(): "+ config.get(parameter));
 	}
 
 
 
 	@Override
 	public void setConfig(String parameter, String value) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		config.put(parameter, value);
+		System.out.println("setConfig(): set value "+ value + " into parameter" + parameter);
 	}
 
 
