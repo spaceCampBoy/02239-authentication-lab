@@ -19,6 +19,10 @@ public class PrintService implements PrintServiceInterface {
 		UnicastRemoteObject.exportObject(this, 0);
 		this.authServ = authServ;
 		
+		printers = new HashMap<>();
+		
+//		Printer printer1 = ;
+		printers.put("printer1", new Printer("printer1"));
 		//
 		//create list of printers every time????
 		//
