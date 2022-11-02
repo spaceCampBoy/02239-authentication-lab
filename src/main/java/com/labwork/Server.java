@@ -17,7 +17,7 @@ public class Server {
 			Naming.rebind("auth", authServ);	
 			
 //			Printing jobs Server
-			PrintService printServ = new PrintService();
+			PrintService printServ = new PrintService(authServ);
 			Naming.rebind("print", printServ);
 			
 			System.out.println("Main server started...");

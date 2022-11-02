@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.security.GeneralSecurityException;
 import java.util.Scanner;
 
 public class Client {
@@ -20,13 +21,11 @@ public class Client {
 	}
 	
 	
-	private String login(String username, String password) throws MalformedURLException, RemoteException, NotBoundException {
+	private void login(String username, String password) throws MalformedURLException, RemoteException, NotBoundException, GeneralSecurityException {
 
-		String sessToken = authService.login(username, password);
+		mySessToken = authService.login(username, password);
 		System.out.println("(client): I am user: '" + username + "'  with password: '" + password + 
-							"'and I got session token: '" + sessToken + "'");		
-		mySessToken = sessToken;
-		return sessToken;
+							"'and I got session token: '" + mySessToken + "'");		
 	}
 	
 	
@@ -37,25 +36,28 @@ public class Client {
 	}
 	
 	
-	public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException {
+	public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException, GeneralSecurityException {
 	
 		Client rmc = new Client();
 		Scanner keyb = new Scanner(System.in);
 		String input = "";
-		while(!input.equals("Exit")) {
+		String[] inSpl = input.split(" ");
+		
+		while(!inSpl[0].equals("Exit")) {
 			input = keyb.nextLine();
+			inSpl = input.split(" ");
 			
-			
-			switch (input) {
+			switch (inSpl[0]) {
 				case "login":
 				{
-					rmc.login("admin", "admin");
+					
+					rmc.login(inSpl[1], inSpl[2]);
 					break;
 				}
 				
 				case "print":
 				{
-					rmc.print("fileToPrint", "Printer1");
+					rmc.print(inSpl[1], inSpl[2]); //fileName, printerName
 					break;
 				}
 			}

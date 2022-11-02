@@ -8,19 +8,31 @@ import java.util.ArrayList;
 
 public class PrintService implements PrintServiceInterface {
 	
+	private AuthService authServ;
 	
-	public PrintService() throws RemoteException {
+	
+	public PrintService(AuthService authServ) throws RemoteException {
 		super();
 		UnicastRemoteObject.exportObject(this, 0);
+		this.authServ = authServ;
 	}
 	
 
 	@Override
 	public String print(String filename, String printer, String token) throws RemoteException {
 //		Todo: check if the token is valid. Need to use Auth service for that
+		
+		
+		if (!authServ.checkSessionToken(token)) {
+			return "user is not logged in (no valid session token found)";
+		}
+		else {
+			System.out.println("(server): "+ "'"+filename+"' is printed at '"+printer+"' using token '"+token+"'");
+			return "'"+filename+"' is printed at '"+printer+"' using valid token '"+token+"'" ;
+		}
+		
 //		Todo: find out what exactly has to be done/returned from this func
-		System.out.println("(server): "+ "'"+filename+"' is printed at '"+printer+"' using token '"+token+"'");
-		return "'"+filename+"' is printed at '"+printer+"' using token '"+token+"'" ;
+
 		
 	}
 

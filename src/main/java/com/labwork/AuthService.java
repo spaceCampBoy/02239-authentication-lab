@@ -1,15 +1,27 @@
 package com.labwork;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
+import java.security.GeneralSecurityException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Scanner;
+
+import com.lambdaworks.crypto.SCrypt;
+import com.lambdaworks.crypto.SCryptUtil;
 
 public class AuthService implements AuthServiceInterface {
 
 	private ArrayList<String> tokenList;
+	private static final SecureRandom secureRandom = new SecureRandom(); //threadsafe
+	private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder(); //threadsafe
+	
 	
 	public AuthService() throws RemoteException {
 		super();
@@ -19,27 +31,63 @@ public class AuthService implements AuthServiceInterface {
 	 
 	
 	
+	
+	
 	@Override
-	public String login(String username, String password) throws RemoteException {
+	public String login(String username, String password) throws RemoteException, GeneralSecurityException  {
 		
-		// Todo: VERIFY LOGIN AND PASSWORD
-		boolean verified = true;
-		if (verified) {
+		//get the password from file
+		String storedPass = returnUserStoredPass(username);
+		
+		if (storedPass == null) {
+			System.out.println("(server): user '"+username+"' is not found");
+			return null;
+		}
+		else if (SCryptUtil.check(password, storedPass)) {
 			System.out.println("(server): user '"+username+"' is verified");
 			return createSessionToken();
 		}
 		else {
+			System.out.println("(server): incorrect password for user '"+username+"'");
 			return null;
 		}
 	}
 
 	
+	private String returnUserStoredPass(String username) {
+		String hashedUserPass = null; 
+		try {
+		      File myObj = new File("./src/main/java/com/labwork/userlist.txt");
+		      Scanner myReader = new Scanner(myObj);
+		      while (myReader.hasNextLine()) {
+		        String data = myReader.nextLine();
+		        String[] lineSplit = data.split(":");
+		        
+		        if (lineSplit[0].equals(username) ) {
+		        	hashedUserPass = lineSplit[1];
+		        	break;
+		        }
+		      }
+		      myReader.close();
+		    } catch (FileNotFoundException e) {
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		    }
+		 
+		 return hashedUserPass;
+	}
 	
 	public String createSessionToken() {
-		//Todo: GENERATE SESSION TOKEN
-		String sessToken =  "sessionTokenForUser1";
+	    byte[] randomBytes = new byte[24];
+	    secureRandom.nextBytes(randomBytes);
+		String sessToken = base64Encoder.encodeToString(randomBytes);
 		tokenList.add(sessToken);
 		return sessToken;
+	}
+	
+	
+	public Boolean checkSessionToken(String token) {
+		return tokenList.contains(token);
 	}
 }
 
