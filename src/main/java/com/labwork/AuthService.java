@@ -1,7 +1,10 @@
 package com.labwork;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.security.GeneralSecurityException;
@@ -29,14 +32,13 @@ public class AuthService implements AuthServiceInterface {
 	}
 
 	
-
 	@Override
 	public String login(String username, String password) throws RemoteException, GeneralSecurityException  {
 		//get the password from file
 		String storedPass = returnUserStoredPass(username);
 
 		if ((storedPass == null) || (!SCryptUtil.check(password, storedPass))) {
-			System.out.println("(server): Incorrect credentials");
+			System.out.println("(server): Incorrect credentials");	
 			return null;
 		}
 		else {

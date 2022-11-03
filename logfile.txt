@@ -1,0 +1,27 @@
+#      |       Datetime      |      methodname      |      username      |       token      |      method's response
+------------------------------------------------------------------------------------------------------------------------------------------
+0   |   Thu Nov 03 17:44:21 CET 2022   |   print     |   null   |   null   |   User is not authenticated. Please log in
+1   |   Thu Nov 03 17:44:25 CET 2022   |   queue     |   null   |   null   |   User is not authenticated. Please log in
+2   |   Thu Nov 03 17:44:35 CET 2022   |   topQueue  |   null   |   null   |   User is not authenticated. Please log in
+3   |   Thu Nov 03 17:44:38 CET 2022   |   start     |   null   |   null   |   User is not authenticated. Please log in
+4   |   Thu Nov 03 17:44:38 CET 2022   |   stop      |   null   |   null   |   User is not authenticated. Please log in
+5   |   Thu Nov 03 17:44:40 CET 2022   |   restart   |   null   |   null   |   User is not authenticated. Please log in
+6   |   Thu Nov 03 17:44:44 CET 2022   |   status    |   null   |   null   |   User is not authenticated. Please log in
+7   |   Thu Nov 03 17:44:49 CET 2022   |   setConfig |   null   |   null   |   User is not authenticated. Please log in
+8   |   Thu Nov 03 17:44:54 CET 2022   |   readConfig|   null   |   null   |   User is not authenticated. Please log in
+9   |   Thu Nov 03 17:45:37 CET 2022   |   login     |   NOuser:passw   |   null   |   Login unsuccessful
+10   |   Thu Nov 03 17:45:56 CET 2022   |   login     |   admin:WRONG   |   null   |   Login unsuccessful
+11   |   Thu Nov 03 17:46:04 CET 2022   |   login     |   admin:admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Logged in successfully
+12   |   Thu Nov 03 17:46:15 CET 2022   |   print     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   'document1' is printed at 'printer1
+13   |   Thu Nov 03 17:46:23 CET 2022   |   queue     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   {}
+14   |   Thu Nov 03 17:46:32 CET 2022   |   topQueue  |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   No such job number. Queue has 0 jobs
+15   |   Thu Nov 03 17:46:38 CET 2022   |   start     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Service is already running
+16   |   Thu Nov 03 17:46:41 CET 2022   |   stop      |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Print service is stopped
+17   |   Thu Nov 03 17:46:45 CET 2022   |   stop      |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Service is not running right now
+18   |   Thu Nov 03 17:46:48 CET 2022   |   start     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Print service is running
+19   |   Thu Nov 03 17:46:50 CET 2022   |   restart   |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Print service is restarted
+20   |   Thu Nov 03 17:47:01 CET 2022   |   setConfig |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Value 'value' is set for parameter 'param'
+21   |   Thu Nov 03 17:47:09 CET 2022   |   readConfig|   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Value of parameter 'param' is value
+22   |   Thu Nov 03 17:49:36 CET 2022   |   print     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   User is not authenticated. Please log in
+23   |   Thu Nov 03 17:49:55 CET 2022   |   login     |   user1:user1   |   9y8hQT8LCFfTeQ7iM_cd9bjCW13dW3DX   |   Logged in successfully
+24   |   Thu Nov 03 17:51:01 CET 2022   |   print     |   user1   |   9y8hQT8LCFfTeQ7iM_cd9bjCW13dW3DX   |   User is not authenticated. Please log in
