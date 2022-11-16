@@ -1,0 +1,30 @@
+[
+    {
+        "user": "Alice",
+        "operations": ["all"]
+    },
+    {
+        "user": "Bob",
+        "operations": ["start", "stop", "restart", "status", "readConfig", "setConfig"]
+    },
+    {
+        "user": "Cecilia",
+        "operations": ["print", "queue","topQueue", "restart"]
+    },
+    {
+        "user": "David",
+        "operations": ["print", "queue"]
+    },
+    {
+        "user": "Erica",
+        "operations": ["print", "queue"]
+    },
+    {
+        "user": "Fred",
+        "operations": ["print", "queue"]
+    },
+    {
+        "user": "George",
+        "operations": ["print", "queue"]
+    }
+]

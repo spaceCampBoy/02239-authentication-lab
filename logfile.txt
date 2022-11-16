@@ -1,0 +1,55 @@
+#      |       Datetime      |      methodname      |      username      |       token      |      method's response
+------------------------------------------------------------------------------------------------------------------------------------------
+0   |   Thu Nov 03 17:44:21 CET 2022   |   print     |   null   |   null   |   User is not authenticated. Please log in
+1   |   Thu Nov 03 17:44:25 CET 2022   |   queue     |   null   |   null   |   User is not authenticated. Please log in
+2   |   Thu Nov 03 17:44:35 CET 2022   |   topQueue  |   null   |   null   |   User is not authenticated. Please log in
+3   |   Thu Nov 03 17:44:38 CET 2022   |   start     |   null   |   null   |   User is not authenticated. Please log in
+4   |   Thu Nov 03 17:44:38 CET 2022   |   stop      |   null   |   null   |   User is not authenticated. Please log in
+5   |   Thu Nov 03 17:44:40 CET 2022   |   restart   |   null   |   null   |   User is not authenticated. Please log in
+6   |   Thu Nov 03 17:44:44 CET 2022   |   status    |   null   |   null   |   User is not authenticated. Please log in
+7   |   Thu Nov 03 17:44:49 CET 2022   |   setConfig |   null   |   null   |   User is not authenticated. Please log in
+8   |   Thu Nov 03 17:44:54 CET 2022   |   readConfig|   null   |   null   |   User is not authenticated. Please log in
+9   |   Thu Nov 03 17:45:37 CET 2022   |   login     |   NOuser:passw   |   null   |   Login unsuccessful
+10   |   Thu Nov 03 17:45:56 CET 2022   |   login     |   admin:WRONG   |   null   |   Login unsuccessful
+11   |   Thu Nov 03 17:46:04 CET 2022   |   login     |   admin:admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Logged in successfully
+12   |   Thu Nov 03 17:46:15 CET 2022   |   print     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   'document1' is printed at 'printer1
+13   |   Thu Nov 03 17:46:23 CET 2022   |   queue     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   {}
+14   |   Thu Nov 03 17:46:32 CET 2022   |   topQueue  |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   No such job number. Queue has 0 jobs
+15   |   Thu Nov 03 17:46:38 CET 2022   |   start     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Service is already running
+16   |   Thu Nov 03 17:46:41 CET 2022   |   stop      |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Print service is stopped
+17   |   Thu Nov 03 17:46:45 CET 2022   |   stop      |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Service is not running right now
+18   |   Thu Nov 03 17:46:48 CET 2022   |   start     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Print service is running
+19   |   Thu Nov 03 17:46:50 CET 2022   |   restart   |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Print service is restarted
+20   |   Thu Nov 03 17:47:01 CET 2022   |   setConfig |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Value 'value' is set for parameter 'param'
+21   |   Thu Nov 03 17:47:09 CET 2022   |   readConfig|   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   Value of parameter 'param' is value
+22   |   Thu Nov 03 17:49:36 CET 2022   |   print     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   User is not authenticated. Please log in
+23   |   Thu Nov 03 17:49:55 CET 2022   |   login     |   user1:user1   |   9y8hQT8LCFfTeQ7iM_cd9bjCW13dW3DX   |   Logged in successfully
+24   |   Thu Nov 03 17:51:01 CET 2022   |   print     |   user1   |   9y8hQT8LCFfTeQ7iM_cd9bjCW13dW3DX   |   User is not authenticated. Please log in
+25   |   Sun Nov 13 04:19:51 CET 2022   |   login     |   admin:admin   |   b2sXHt5cy_XRLPamdjRezf_wLkUYuzj-   |   Logged in successfully
+26   |   Sun Nov 13 04:20:35 CET 2022   |   print     |   admin   |   b2sXHt5cy_XRLPamdjRezf_wLkUYuzj-   |   'filename1' is printed at 'printer1
+27   |   Sun Nov 13 05:50:10 CET 2022   |   login     |   admin:admin   |   F8BiwDdqb1OicZRMhoBedxMJP_OarPL8   |   Logged in successfully
+28   |   Sun Nov 13 05:50:30 CET 2022   |   login     |   user1:user1   |   N-92K6prAWq1mpO0ubAIzleE5AwqzusJ   |   Logged in successfully
+29   |   Sun Nov 13 05:51:29 CET 2022   |   login     |   David:user1   |   Q_KlR_IktBxGcTByKMEmAZc5K5dDZFlu   |   Logged in successfully
+30   |   Sun Nov 13 05:51:34 CET 2022   |   login     |   user1:user1   |   null   |   Login unsuccessful
+31   |   Sun Nov 13 05:51:41 CET 2022   |   login     |   David:user1   |   qJTUl12bwut63aCkarDJ97_OUwFyFPKM   |   Logged in successfully
+32   |   Sun Nov 13 05:51:52 CET 2022   |   print     |   David   |   qJTUl12bwut63aCkarDJ97_OUwFyFPKM   |   'filename1' is printed at 'printer1
+33   |   Sun Nov 13 05:52:38 CET 2022   |   status    |   David   |   qJTUl12bwut63aCkarDJ97_OUwFyFPKM   |   ON
+34   |   Sun Nov 13 05:52:51 CET 2022   |   stop      |   David   |   qJTUl12bwut63aCkarDJ97_OUwFyFPKM   |   Print service is stopped
+35   |   Sun Nov 13 05:52:54 CET 2022   |   start     |   David   |   qJTUl12bwut63aCkarDJ97_OUwFyFPKM   |   Print service is running
+36   |   Sun Nov 13 06:57:48 CET 2022   |   login     |   David:user2   |   8u8XOkUFGFY0huycbQNUmF9Pn23VvZ3u   |   Logged in successfully
+37   |   Sun Nov 13 06:57:50 CET 2022   |   start     |   David   |   8u8XOkUFGFY0huycbQNUmF9Pn23VvZ3u   |   Service is already running
+38   |   Sun Nov 13 06:58:00 CET 2022   |   stop      |   David   |   8u8XOkUFGFY0huycbQNUmF9Pn23VvZ3u   |   Print service is stopped
+39   |   Sun Nov 13 06:58:02 CET 2022   |   start     |   David   |   8u8XOkUFGFY0huycbQNUmF9Pn23VvZ3u   |   Print service is running
+40   |   Sun Nov 13 07:05:37 CET 2022   |   login     |   David:user2   |   iMUY_P-W9_-ApDWYwMk5g7BGwubjanjj   |   Logged in successfully
+41   |   Sun Nov 13 07:05:41 CET 2022   |   start     |   David   |   iMUY_P-W9_-ApDWYwMk5g7BGwubjanjj   |   Service is already running
+42   |   Sun Nov 13 07:05:43 CET 2022   |   stop      |   David   |   iMUY_P-W9_-ApDWYwMk5g7BGwubjanjj   |   Print service is stopped
+43   |   Sun Nov 13 08:37:07 CET 2022   |   login     |   David:user2   |   rgvnXt4WYNbNj8fXt7cc7dZ9KFJRuO8R   |   Logged in successfully
+44   |   Sun Nov 13 08:37:10 CET 2022   |   start     |   David   |   rgvnXt4WYNbNj8fXt7cc7dZ9KFJRuO8R   |   Service is already running
+45   |   Sun Nov 13 08:37:13 CET 2022   |   stop      |   David   |   rgvnXt4WYNbNj8fXt7cc7dZ9KFJRuO8R   |   Print service is stopped
+46   |   Sun Nov 13 08:37:24 CET 2022   |   login     |   Alice:admin   |   BeK8TAFQcfUhhw68DwUkIGpmdwxhSWMl   |   Logged in successfully
+47   |   Sun Nov 13 08:37:30 CET 2022   |   start     |   Alice   |   BeK8TAFQcfUhhw68DwUkIGpmdwxhSWMl   |   Print service is running
+48   |   Sun Nov 13 08:37:32 CET 2022   |   stop      |   Alice   |   BeK8TAFQcfUhhw68DwUkIGpmdwxhSWMl   |   Print service is stopped
+49   |   Wed Nov 16 16:02:22 CET 2022   |   login     |   Alice:admin   |   5RtJPc3qbhABNKGbfK2__K0diHatu9k0   |   Logged in successfully
+50   |   Wed Nov 16 16:06:18 CET 2022   |   login     |   Alice:admin   |   kw7NtElNfWjmg0OX0Y2Zp7uC9P7qDPEF   |   Logged in successfully
+51   |   Wed Nov 16 16:06:27 CET 2022   |   login     |   David:user2   |   kpzZTL6ZA4nez0wwnhwfDMNFtdXI3_YL   |   Logged in successfully
+52   |   Wed Nov 16 16:06:52 CET 2022   |   print     |   David   |   kpzZTL6ZA4nez0wwnhwfDMNFtdXI3_YL   |   'filename1' is printed at 'printer1
