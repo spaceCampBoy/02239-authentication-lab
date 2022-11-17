@@ -1,0 +1,10 @@
+admin:manager
+user1:user
+user2:user
+Alice:manager
+Bob:technician
+Cecilia:powerUser
+David:user
+Erica:user
+Fred:user
+George:user

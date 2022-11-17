@@ -25,3 +25,28 @@
 22   |   Thu Nov 03 17:49:36 CET 2022   |   print     |   admin   |   PR8xPxfMboR_aNq2LpX-g_u3mlzB_AIQ   |   User is not authenticated. Please log in
 23   |   Thu Nov 03 17:49:55 CET 2022   |   login     |   user1:user1   |   9y8hQT8LCFfTeQ7iM_cd9bjCW13dW3DX   |   Logged in successfully
 24   |   Thu Nov 03 17:51:01 CET 2022   |   print     |   user1   |   9y8hQT8LCFfTeQ7iM_cd9bjCW13dW3DX   |   User is not authenticated. Please log in
+25   |   Thu Nov 17 22:39:52 CET 2022   |   login     |   admin:admin   |   6OdwoAga9rL7oVVu5bT6qf0FkYBlmKMO   |   Logged in successfully
+26   |   Thu Nov 17 22:40:05 CET 2022   |   print     |   admin   |   6OdwoAga9rL7oVVu5bT6qf0FkYBlmKMO   |   'doc1' is printed at 'printer1
+27   |   Thu Nov 17 22:40:24 CET 2022   |   setConfig |   admin   |   6OdwoAga9rL7oVVu5bT6qf0FkYBlmKMO   |   Value 'value' is set for parameter 'a'
+28   |   Thu Nov 17 22:40:34 CET 2022   |   readConfig|   admin   |   6OdwoAga9rL7oVVu5bT6qf0FkYBlmKMO   |   Value of parameter 'a' is value
+29   |   Thu Nov 17 22:41:16 CET 2022   |   login     |   user1:user1   |   rVPG9KFgK_lHxIioFQd1A7FEFGESpSi9   |   Logged in successfully
+30   |   Thu Nov 17 22:41:38 CET 2022   |   print     |   user1   |   rVPG9KFgK_lHxIioFQd1A7FEFGESpSi9   |   'doc' is printed at 'printer1
+31   |   Thu Nov 17 22:42:02 CET 2022   |   queue     |   user1   |   rVPG9KFgK_lHxIioFQd1A7FEFGESpSi9   |   {}
+32   |   Thu Nov 17 22:42:10 CET 2022   |   restart   |   user1   |   rVPG9KFgK_lHxIioFQd1A7FEFGESpSi9   |   User does not have rights to call this operation
+33   |   Thu Nov 17 22:42:24 CET 2022   |   status    |   user1   |   rVPG9KFgK_lHxIioFQd1A7FEFGESpSi9   |   User does not have rights to call this operation
+34   |   Thu Nov 17 22:42:33 CET 2022   |   setConfig |   user1   |   rVPG9KFgK_lHxIioFQd1A7FEFGESpSi9   |   User does not have rights to call this operation
+35   |   Thu Nov 17 22:54:36 CET 2022   |   login     |   Alice:alice   |   null   |   Login unsuccessful
+36   |   Thu Nov 17 22:57:25 CET 2022   |   login     |   Alice:alice   |   xaNAyEh908UuGE3EEt5ZVirKupQPTi1t   |   Logged in successfully
+37   |   Thu Nov 17 22:57:34 CET 2022   |   setConfig |   Alice   |   xaNAyEh908UuGE3EEt5ZVirKupQPTi1t   |   Value 'valu' is set for parameter 'a'
+38   |   Thu Nov 17 22:58:08 CET 2022   |   login     |   David:david   |   h8mOl8jPTMuzwVK9LNnXx4meelBYPRNt   |   Logged in successfully
+39   |   Thu Nov 17 22:58:23 CET 2022   |   print     |   David   |   h8mOl8jPTMuzwVK9LNnXx4meelBYPRNt   |   'doc1' is printed at 'printer1
+40   |   Thu Nov 17 22:58:27 CET 2022   |   queue     |   David   |   h8mOl8jPTMuzwVK9LNnXx4meelBYPRNt   |   {}
+41   |   Thu Nov 17 22:58:30 CET 2022   |   restart   |   David   |   h8mOl8jPTMuzwVK9LNnXx4meelBYPRNt   |   Denied! User does not have rights to call this operation
+42   |   Thu Nov 17 22:58:47 CET 2022   |   status    |   David   |   h8mOl8jPTMuzwVK9LNnXx4meelBYPRNt   |   Denied! User does not have rights to call this operation
+43   |   Thu Nov 17 23:00:36 CET 2022   |   login     |   Cecilia:cecilia   |   X15QjBiyvilhl1-oJY53GmrQ1vpjru_E   |   Logged in successfully
+44   |   Thu Nov 17 23:00:56 CET 2022   |   print     |   Cecilia   |   X15QjBiyvilhl1-oJY53GmrQ1vpjru_E   |   '1' is printed at 'printer1
+45   |   Thu Nov 17 23:00:59 CET 2022   |   queue     |   Cecilia   |   X15QjBiyvilhl1-oJY53GmrQ1vpjru_E   |   {}
+46   |   Thu Nov 17 23:01:16 CET 2022   |   topQueue  |   Cecilia   |   X15QjBiyvilhl1-oJY53GmrQ1vpjru_E   |   No such job number. Queue has 0 jobs
+47   |   Thu Nov 17 23:01:26 CET 2022   |   restart   |   Cecilia   |   X15QjBiyvilhl1-oJY53GmrQ1vpjru_E   |   Print service is restarted
+48   |   Thu Nov 17 23:01:45 CET 2022   |   setConfig |   Cecilia   |   X15QjBiyvilhl1-oJY53GmrQ1vpjru_E   |   Denied! User does not have rights to call this operation
+49   |   Thu Nov 17 23:01:48 CET 2022   |   stop      |   Cecilia   |   X15QjBiyvilhl1-oJY53GmrQ1vpjru_E   |   Denied! User does not have rights to call this operation

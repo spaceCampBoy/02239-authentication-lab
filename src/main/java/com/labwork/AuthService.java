@@ -21,6 +21,7 @@ import com.lambdaworks.crypto.SCryptUtil;
 public class AuthService implements AuthServiceInterface {
 
 	private HashMap<String, Timestamp> tokenList;
+	private HashMap<String,ArrayList<String>> usersAccessOper;
 	private static final SecureRandom secureRandom = new SecureRandom(); //threadsafe
 	private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder(); //threadsafe
 
@@ -28,6 +29,7 @@ public class AuthService implements AuthServiceInterface {
 	public AuthService() throws RemoteException {
 		super();
 		tokenList = new HashMap<>();
+		usersAccessOper = new HashMap<>();
 		UnicastRemoteObject.exportObject(this, 0);
 	}
 
@@ -43,7 +45,15 @@ public class AuthService implements AuthServiceInterface {
 		}
 		else {
 			System.out.println("(server): User '"+ username +"' is verified");
-			return createSessionToken();
+			
+			ArrayList<String> userOperations = returnUserOperations(username);
+			String sessToken = createSessionToken();
+			
+			
+			tokenList.put(sessToken, Timestamp.from(Instant.now()));
+			usersAccessOper.put(sessToken, userOperations);
+			
+			return sessToken;
 		}
 	}
 
@@ -70,13 +80,70 @@ public class AuthService implements AuthServiceInterface {
 
 		return hashedUserPass;
 	}
+	
+	
+	
+	private ArrayList<String> returnUserOperations(String username) {
+		ArrayList<String> userOperations = null;
+		String userRole = getUserRole(username);
+		
+		if (userRole != null) {
+			userOperations = getRoleOperations(userRole);
+		}
+		
+		return userOperations;
+	}
+	
+	
+	private String getUserRole(String username) {
+		String userRole = null;
+		try {
+			File myObj = new File("./src/main/java/com/labwork/user-roles.txt");
+			Scanner myReader = new Scanner(myObj);
+			while (myReader.hasNextLine()) {
+				String data = myReader.nextLine();
+				String[] lineSplit = data.split(":");
+
+				if (lineSplit[0].equals(username) ) {
+					userRole = lineSplit[1];
+					break;
+				}
+			}
+			myReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+		
+		return userRole;
+	}
+	
+	private ArrayList<String> getRoleOperations(String role) {
+		ArrayList<String> roleOperations = null;
+		try {
+			File myObj = new File("./src/main/java/com/labwork/rbac-descr.txt");
+			Scanner myReader = new Scanner(myObj);
+			while (myReader.hasNextLine()) {
+				String data = myReader.nextLine();
+				String[] lineSplit = data.split(":");
+
+				if (lineSplit[0].equals(role) ) {
+					roleOperations = new ArrayList<String>(Arrays.asList(lineSplit[1].split(",")));
+					break;
+				}
+			}
+			myReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}	
+		return roleOperations;
+	}
 
 	public String createSessionToken() {
 		byte[] randomBytes = new byte[24];
 		secureRandom.nextBytes(randomBytes);
 		String sessToken =  base64Encoder.encodeToString(randomBytes);
-		tokenList.put(sessToken, Timestamp.from(Instant.now()));
-
 		return sessToken;
 	}
 
@@ -95,6 +162,10 @@ public class AuthService implements AuthServiceInterface {
 			}
 			return tokenList.containsKey(token) && diffAccept;
 		}
+	}
+	
+	public Boolean checkRightsAcess(String token, String operName) {
+		return usersAccessOper.get(token).contains(operName);
 	}
 	
 	

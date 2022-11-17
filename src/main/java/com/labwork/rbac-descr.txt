@@ -1,0 +1,4 @@
+manager:print,queue,topQueue,start,stop,restart,status,readConfig,setConfig
+technician:start,stop,restart,status,readConfig,setConfig
+powerUser:print,queue,topQueue,restart
+user:print,queue
