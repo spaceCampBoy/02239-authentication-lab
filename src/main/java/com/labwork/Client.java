@@ -109,13 +109,7 @@ public class Client {
 			inSpl = input.split(" ");
 			
 			switch (inSpl[0]) {
-				case "reg":
-					String log1 = inSpl[1];
-					String pass1 = inSpl[2];
-					String scryptedPass = SCryptUtil.scrypt(pass1, 16384, 8, 1);
-					System.out.println(log1+":"+scryptedPass);
-					break;
-					
+			
 				case "login":
 					if (inSpl.length < 3) {
 						System.out.println(LACK_PARAMS_MESSAGE);
