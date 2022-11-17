@@ -3,6 +3,12 @@
 Java Authentication Lab for 02239 Data Security course. <br/>
 This project is client/server application using Java RMI + implemented authentication mechanism (login with credentials, session token, storing hashed passwords in public file)
 
+<br />
+<br />
+THIS BRANCH HAS RBAC IMPLEMENTED (see below)
+
+<br />
+<br />
 
 To run the project
 1) Run Server.java
@@ -23,9 +29,18 @@ To run the project
  <br />
  <br />
 
-user credentials for test: <br />
-admin : admin <br />
-user1 : user1 <br />
+RBAC:
+rbac-descr.txt contains roles and operations available to a role "$role:$operation1,operation2"
+user-roles.txt contains usernames and assigned roles "$username:$role". Only one role for one username is possible
+
+user credentials for test ($username : $password) : <br />
+Alice : alice <br />
+Bob : bob <br />
+Cecilia: cecilia <br />
+David : david <br />
+Erica : erica <br />
+Fred : fred <br />
+George : george <br />
 
 printer names: <br />
 printer1 <br />
