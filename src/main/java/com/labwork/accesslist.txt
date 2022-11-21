@@ -1,0 +1,7 @@
+Alice:print,queue,topQueue,start,stop,restart,status,readConfig,setConfig
+Bob:start,stop,restart,status,readConfig,setConfig
+Cecilia:print,queue,topQueue,restart
+David:print,queue
+Erica:print,queue
+Fred:print,queue
+George:print,queue

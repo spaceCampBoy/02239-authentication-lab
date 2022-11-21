@@ -1,0 +1,34 @@
+[
+    {
+        "user": "Alice",
+<<<<<<< HEAD
+        "operations": ["all"]
+=======
+        "operations": ["print", "start", "stop", "restart", "status", "readConfig", "setConfig"]
+>>>>>>> 67c6b6d (changed access control type from json to text file, code is similar to rbac with only some minor changes)
+    },
+    {
+        "user": "Bob",
+        "operations": ["start", "stop", "restart", "status", "readConfig", "setConfig"]
+    },
+    {
+        "user": "Cecilia",
+        "operations": ["print", "queue","topQueue", "restart"]
+    },
+    {
+        "user": "David",
+        "operations": ["print", "queue"]
+    },
+    {
+        "user": "Erica",
+        "operations": ["print", "queue"]
+    },
+    {
+        "user": "Fred",
+        "operations": ["print", "queue"]
+    },
+    {
+        "user": "George",
+        "operations": ["print", "queue"]
+    }
+]
